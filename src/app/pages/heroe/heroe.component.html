@@ -1,1 +1,70 @@
-<p>heroe works!</p>
+<h1>Héroe <small>Nombre del Héroe</small> </h1>
+ <hr>
+ <div class="row text-end">
+  <div class="col">
+     <a type="button" class="btn btn-danger"
+            href="/heroes"
+      >
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </a>
+  </div>
+</div>
+
+<div class="row animmated fadeIn faster">
+    <div class="col">
+        <form (ngSubmit)="guardar(f)" #f="ngForm">
+            <div class="form-group">
+                <label for="">Firebase ID</label>
+                <input type="text" 
+                [(ngModel)]="heroe.id"
+                name="id"
+                class="form-control" 
+                placeholder="Firebase ID" 
+                disabled="disabled">
+                <small class="form-text text-muted">Este campo es autogenerado</small>
+            </div>
+            <div class="form-group">
+                <label for="">Nombre</label>
+                <input type="text" 
+                [(ngModel)]="heroe.nombre"
+                name="nombre"
+                class="form-control" 
+                placeholder="Nombre del heroe" 
+                required>
+            </div>
+            <div class="form-group">
+                <label for="">Poder</label>
+                <input type="text"
+                [(ngModel)]="heroe.poder"
+                name="poder"
+                class="form-control" 
+                placeholder="poder del heroe" 
+                >
+            </div>
+            <div class="form-group">
+                <label for="">Estado</label>
+                <br>
+
+                <button *ngIf="heroe.vivo"
+                        (click)="heroe.vivo=false"   
+                class="btn btn-success w-50" type="button">
+                    <i class="fa fa-smile-wink "></i>
+                    Vivo
+                </button>
+                <button *ngIf="!heroe.vivo"
+                (click)="heroe.vivo=true" class="btn btn-danger w-50" type="button">
+                    <i class="fa fa-dizzy "></i>
+                    Muerto
+                </button>
+            </div>
+            <hr>
+            <div class="form-group text-center">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
